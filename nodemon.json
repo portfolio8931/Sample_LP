@@ -1,0 +1,6 @@
+{
+  "watch": ["src", "public"],
+  "ext": "js,ejs,scss",
+  "ignore": ["public/styles.css"],
+  "exec": "concurrently \"yarn build:sass\" \"node server.js\""
+}

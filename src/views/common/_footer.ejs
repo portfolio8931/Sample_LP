@@ -1,0 +1,186 @@
+    <!--.l-footer-->
+    <div class="l-footer">
+      <div class="l-footer__top">
+        <div class="l-footer__topItem">
+          <p class="l-footer__topItemLogo js-animate js-split">
+            <span>M</span>
+            <span>M</span>
+          </p>
+          <p class="l-footer__topItemTxt js-animate js-fadeRight">仲間の幸せを共に実現し、<br>MAISON MARCに関わる<br>全てを幸せに</p>
+        </div>
+        <div class="l-footer__topRec">
+          <a class="l-footer__topRecBtn" href="#">採用情報</a>
+          <a class="l-footer__topRecBtn" href="#">お問い合わせ</a>
+        </div>
+      </div>
+      <div class="l-footer__bottom">
+        <% let footerDiv =[
+          {name:'ENGINEERING',
+           img:'img-bnr-engineering.jpg',
+           alt:'ENGINEERING'
+          },
+          {name:'DESIGN',
+           img:'img-bnr-design.jpg',
+           alt:'DESIGN'
+          },
+          {name:'MARKETING',
+           img:'img-bnr-marketing.jpg',
+           alt:'MARKETING'
+          },
+          {name:'BACK OFFICE',
+           img:'img-bnr-backoffice.jpg',
+           alt:'BACK OFFICE'
+          }
+        ] %>
+
+        <% footerDiv.forEach(function(item){ %>
+          <div class="l-footer__bottomItem js-animate js-fadeUp">
+            <a href="#"><img class="l-footer__bottomItemImg" src="images/<%= item.img %>" alt="<%= item.alt %>">
+            <p class="l-footer__bottomItemName"><%= item.name %></p></a>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+    <script>
+      function initSplit() {
+        document.querySelectorAll('.js-split').forEach(el => {
+          const isSlow = el.classList.contains('js-slow');
+          const delayBase = isSlow ? 0.16 : 0.08;
+
+          const chars = el.querySelectorAll('span');
+          chars.forEach((span, i) => {
+            span.style.transitionDelay = `${i * delayBase}s`;
+            span.classList.add('fromScroll');
+          });
+        });
+      }
+      initSplit();
+
+      function applyFontResizeDelay() {
+        document.querySelectorAll('.js-split').forEach(el => {
+          const isSlow = el.classList.contains('js-slow');
+          const delayBase = isSlow ? 0.2 : 0.18;
+
+          el.querySelectorAll('span').forEach((span, i) => {
+            span.style.transitionDelay = `${i * delayBase}s`;
+          });
+        });
+      }
+
+      let lastWidth = window.innerWidth;
+
+      window.addEventListener('resize', () => {
+        if (Math.abs(window.innerWidth - lastWidth) > 50) {
+          applyFontResizeDelay();
+        }
+        lastWidth = window.innerWidth;
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+
+        const isTop = location.pathname === "/" || location.pathname === "/index.html";
+        const target = document.querySelectorAll('.js-animate');
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('inView');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.2,
+          rootMargin: '-10% 0px'
+        });
+
+        if (isTop) {
+          target.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top > window.innerHeight) {
+              observer.observe(el);
+            }
+          });
+        } else {
+          target.forEach(el => observer.observe(el));
+        }
+
+        let observerStarted = false;
+
+        const startObserverOnScroll = () => {
+          if (observerStarted) return;
+          if (window.scrollY === 0) return;
+
+          observerStarted = true;
+          target.forEach(el => observer.observe(el));
+          window.removeEventListener("scroll", startObserverOnScroll);
+        };
+
+        window.addEventListener("scroll", startObserverOnScroll, { passive: true });
+
+      });
+
+      $(function () {
+        $(".p-main__member").slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+          prevArrow:
+            '<button type="button" class="slick-prev custom-prev"><img src="images/img-model-arrow-prev.png" alt=""></button>',
+          nextArrow:
+            '<button type="button" class="slick-next custom-next"><img src="images/img-model-arrow-next.png" alt=""></button>',
+            dots: true,
+            dotsClass: 'dots-wrap',
+        });
+      });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const moreNum = 2;
+        const btnTxt = document.querySelector('.p-main__hideBtnTxt');
+        const btnArrow = document.querySelector('.p-main__hideBtnArrow');
+        const items = document.querySelectorAll('.p-main__interviewItem.hideTarget, .p-main__intCard.hideTarget');
+        let expand = false;
+
+        function updateView(){
+          if (window.innerWidth <= 768){
+            let count = 0;
+            items.forEach(item => {
+              if(item.classList.contains('p-main__interviewItem')){
+                if (count < moreNum){
+                  item.classList.remove('hide');
+                  count++;
+                } else {
+                  item.classList.add('hide');
+                }
+              } else {
+                item.classList.add('hide');
+              }
+            });
+            btnTxt.textContent = 'もっと見る';
+            btnArrow.classList.remove('open');
+            expand = false;
+          } else {
+            items.forEach(item => item.classList.remove('hide'));
+            btnTxt.textContent = '';
+            btnArrow.classList.remove('open');
+            expand = true;
+          }
+        }
+
+        updateView();
+
+        window.addEventListener('resize', updateView);
+
+        btnArrow.addEventListener('click', () => {
+          if(!expand){
+            items.forEach(item => item.classList.remove('hide'));
+            btnTxt.textContent = 'CLOSE';
+            btnArrow.classList.add('open');
+            expand = true;
+          } else {
+            updateView();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

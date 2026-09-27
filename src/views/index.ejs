@@ -1,0 +1,221 @@
+<%- include('common/_header') %>
+    <!--.p-main-->
+    <div class="p-main">
+      <!--.p-main__vision-->
+      <section>
+        <div class="p-main__vision">
+          <h2 class="p-main__visionTtl js-animate js-split">
+            <% let visionTtl =['O','U','R','SPACE','V','I','S','I','O','N']; %>
+
+            <% visionTtl.forEach(function(item){ %>
+              <% if(item === 'SPACE'){ %>
+                <span class="ws">&nbsp;</span>
+              <% } else { %>
+                <span><%= item %></span>
+              <% } %>
+            <% }) %>
+          </h2>
+          <p class="js-animate js-fadeUp">仲間の幸せを共に実現し、<br>MAISON MARCに関わる全てを幸せに<br>目標に向かって切磋琢磨できる「仲間」<br>挑戦に対して投資ができる「環境」<br>高い意識のもと磨く「技術」<br>これらを軸にやりたいことができる。<br>それがMAISON MARCの考える幸せである。</p>
+        </div>
+      </section>
+      <!--.p-main__member-->
+      <section>
+        <div class="p-main__memberWrapper">
+          <% let member =[
+            {num:'1st',
+            imgMain:'img-modal-1.jpg',
+            imgSub:'img-modal-1_mono.jpg',
+            name:['葉','倉','SPACE','歩'],
+            intro1:'株式会社MAISON MARCで代表取締役をしてしております。',
+            intro2:'「仲間の幸せを共に実現し、MAISON MARCに関わる全てを幸せに」',
+            intro3:'を企業理念として2015年に創業しました。<br>他業種の企業様と組むことが多いですが、Web開発・運用、広告運用まで行なっております。<br>今後も様々なやりたいを形にしていきます。'},
+            {num:'2nd',
+            imgMain:'img-modal-2.jpg',
+            imgSub:'img-modal-2_mono.jpg',
+            name:['永','松','SPACE','大','尚'],
+            intro1:'株式会社MAISON MARCの創業メンバーとして、ジョイン。<br>現在は人事責任者・COOとして、個人の価値観や組織調和などの<br>『正解のない大切なもの』に触れらるやりがいや難しさを日々実感しながら汗をかく日々。<br>メンバーが夢中になれる組織づくりをするのが目標です。<br>抽象的だけど、みんながそう感じてくれるように。<br>海外サッカーが大好き'},
+            {num:'3rd',
+            imgMain:'img-modal-3.jpg',
+            imgSub:'img-modal-3_mono.jpg',
+            name:['島','田','SPACE','瞳',],
+            intro1:'株式会社メゾンマークでデザインを見ています。<br>Webデザインが大好きで14歳のときに独学でコーディングを行い、趣味だったイラストのサイトをオープン<br>しました。そこからずっと独学で舌が、本格的にデザインを学びたいと思い上京して制作会社でデザイナー<br>とパリピな考えで女性系スナップメディアを運営している会社に転職し、デザイナーとしてメディア運営を<br>経験しました。<br>メゾンマークでは、webデザインだけではなくオフィスデザインやオフィシャルグッズのデザイン、案件に<br>よってはCIやDTPんだお様々な場面でデザイナーが活躍しています。'},
+            {num:'4th',
+            imgMain:'img-modal-4.jpg',
+            imgSub:'img-modal-4_mono.jpg',
+            name:['下','平','SPACE','智','也',],
+            intro1:'Web制作のプロフェッショナル集団『メゾンマーク』で営業責任者をしております。<br>当社にはハイセンスなデザイナーが複数名在籍しており、クライアント様からも高い評価をいただいており<br>ます。また、フロントエンドエンジニアも技術力に長けており、当社のデザイナーデザイナーとエンジニア<br>を駆使し、如何にクオリティが高いサイトを制作できるかが私のミッションです。<br>お客様の”こうしたい”を実現し、さらに期待を超えられるよう企画・推進できるよう日々研鑽し、仕事に取<br>り組んでいます。'},
+            {num:'5th',
+            imgMain:'img-modal-5.jpg',
+            imgSub:'img-modal-5_mono.jpg',
+            name:['白','藤','SPACE','卓','也',],
+            intro1:'MAISON MARC CTOとして、開発責任者をしています。<br>最近はフロンt30%、バックエンド60%、インフラ10%くらいの割合で仕事してます。<br>web界隈の、「これ作って」に対して時間とリソースが許す限りは大体作れます。<br>もっとインフラやらないと...！'}
+          ] %>
+
+          <ul class="p-main__member">
+            <% member.forEach(function(item){ %>
+              <li class="p-main__memberItem">
+                <div class="p-main__memberItemTxt">
+                  <p class="p-main__memberItemTxtNum"><%= item.num %> PERSON</p>
+                  <p class="p-main__memberItemTxtName js-animate js-split js-slow">
+                    <% item.name.forEach(function(n){ %>
+                      <% if(n === 'SPACE'){ %>
+                        <span class="ws">&nbsp;</span>
+                      <% } else { %>
+                        <span><%- n %></span>
+                      <% } %>
+                    <% }) %>
+                  </p>
+                </div>
+                <div class="p-main__memberItemImg">
+                  <img class="p-main__memberItemImgColor js-animate js-slideRight" src="images/<%= item.imgMain %>" alt="picture">
+                  <img class="p-main__memberItemImgMono js-animate js-slideRight" src="images/<%= item.imgSub %>" alt="picture">
+                </div>
+                <div class="p-main__memberItemTxtIntr">
+                    <p class="p-main__memberItemTxtIntrItem"><%- item.intro1 %></p>
+                    <% if (item.intro2){ %>
+                      <p class="p-main__memberItemTxtIntrItem"><%- item.intro2 %></p>
+                    <% } %>
+                    <% if (item.intro3){ %>
+                      <p class="p-main__memberItemTxtIntrItem"><%- item.intro3 %></p>
+                    <% } %>
+                  </div>
+              </li>
+            <% }) %>
+          </ul>
+        </div>
+      </section>
+      <!--.p-main__story-->
+      <section>
+        <div class="p-main__story">
+          <h2 class="p-main__storyTtl  js-animate js-split">
+            <% let storyTtl =['S','T','O','R','Y','SPACE','O','F','SPACE','M','M'] %>
+
+            <% storyTtl.forEach(function(item){ %>
+              <% if(item === 'SPACE'){ %>
+                <span class="ws">&nbsp;</span>
+              <% } else { %>
+                <span><%- item %></span>
+              <% } %>
+            <% }) %>
+          </h2>
+          <p class="js-animate js-fadeUp">MMならではのWeb制作に懸ける思いや<br>あらゆる方法で「幸せ」を追求する代表の思い。<br>そしてMAISON MARCGA描く未来の姿を、<br>代表取締役CEO 葉倉 歩に聞く。</p>
+        </div>
+      </section>
+      <!--.p-main__interview-->
+      <section>
+        <div class="p-main__interview">
+          <img class="p-main__interviewTop" src="images/img-story-00.jpg" alt="CEOinterview">
+          <div class="p-main__interviewInner">
+            <% let interviewFirst = [
+              {name:'代表取締役CEO<br>葉倉 歩',
+               ques:'MAISON MARC創業のきっかけは？',
+               answer:'｢今の役員陣との出会いが創業の道へ導いた。｣',
+               text:'創業前、私自身は個人の挑戦としてビジネスを行っていましたが、現在ともに会社を支えている役員陣との出会いが大きな転機となりました。彼らと対話を重ねる中で、一人では到底到達できない大きなビジョンを描くことができたんです。「このメンバーとなら、世界を変えるような素晴らしい会社を作れる」という強い確信が芽生え、MAISON MARCの立ち上げを決意しました。',
+               img:'img-story-01.jpg',
+               alt:'interview1',
+              },
+              {ques:'受け継がれてきている思いは？',
+               answer:'｢MMにはMMたらしめる、哲学がある。｣',
+               text:'時代が変わっても、組織の規模が大きくなっても、私たちが絶対にブレずに持ち続けているもの、それがMAISON MARCの哲学です。それは単なる事業の成長や利益の追求ではなく、「人」と真摯に向き合い、関わるすべての人に本質的な価値を提供し続けるという姿勢です。この哲学こそが私たちのカルチャーであり、全ての意思決定の軸となっています。',
+               img:'img-story-02.jpg',
+               alt:'interview2',
+              },
+              {ques:'CEO就任時に目指したことは？',
+               answer:'｢幸せの新たな価値を作り出すこと。それが使命と考えた。｣',
+               text:'代表取締役CEOに就任した際、私が真っ先に考えたのは「MAISON MARCが存在することで、社会や社員にどんな幸せを提供できるか」ということでした。単に既存のサービスを提供するだけでなく、新しい時代の働き方や生き方に寄り添い、「これまでにない幸せの価値基準」を自分たちの手で生み出していくこと。それこそがCEOとしての最大の使命だと捉え、舵を切りました。',
+               img:'img-story-03.jpg',
+               alt:'interview3',
+              },
+              {ques:'成長し続いている理由は？',
+               answer:'｢理想に向けて、進化し続けるため。｣',
+               text:'私たちが成長を続けられている理由は、現状維持を良しとせず、常に「あるべき理想の姿」を見据えて自らを進化させ続けているからです。失敗を恐れずに挑戦し、変化を歓迎する柔軟性が組織全体に根付いています。これからも描いた目標に向かって歩みを止めることなく、仲間とともに進化を止めない組織であり続けます。',
+               img:'img-story-04.jpg',
+               alt:'interview4',
+              },
+            ] %>
+
+            <% interviewFirst.forEach(function(item, index){ %>
+              <div class="p-main__interviewItem hideTarget <%= index % 2 === 1 ? 'revers' : '' %>">
+                <div class="p-main__interviewItemTxt">
+                  <% if(item.name){ %>
+                    <p class="p-main__interviewItemTxtName"><%- item.name %></p>
+                  <% } %>
+                  <div class="p-main__interviewItemTxtQ">
+                    <div class="p-main__interviewItemTxtQLine"></div>
+                    <p class="p-main__interviewItemTxtQItem"><%- item.ques %></p>
+                  </div>
+                  <p class="p-main__interviewItemTxtA"><%- item.answer %></p>
+                  <p class="p-main__interviewItemTxtADet">葉倉CEO：<br><%- item.text %></p>
+                </div>
+                <img class="p-main__interviewItemImg js-animate js-fadeRight" src="images/<%= item.img %>" alt="<%= item.alt %>">
+              </div>
+            <% }) %>
+            <!--.p-main__intCard-->
+            <div class="p-main__intCard hideTarget">
+              <% let intCardItem =[
+                {
+                  num: '01',
+                  ttl: '志を共にする仲間との出会いと、不変の経営哲学の構築',
+                  text: '個人の挑戦から始まった事業は、志を共にする役員陣との出会いによって大きなビジョンへと進化を遂げました。私たちは創業以来、単なる規模の拡大や一時的な利益の追求ではなく、「人」と真摯に向き合うことを最優先にしてきました。時代が変わっても、組織の規模が大きくなっても、MAISON MARCをMAISON MARCたらしめる不変の哲学を組織の軸としてしっかりと根付かせ、関わるすべての人々に対して本質的な価値を提供し続けるための強固な経営基盤を構築しています。'
+                },
+                {
+                  num: '02',
+                  ttl: 'プロダクトの枠を超えた、持続可能な「新・経済圏」の創出',
+                  text: '単なるツールやシステムの提供にとどまらず、関わるすべての人や企業が持続的に豊かになれる独自の経済圏を生み出す挑戦を行っています。私たちにとってプロダクトはあくまで手段であり、真の目的はその先にある人々の生活やビジネスの発展、そして幸福度の向上です。既存の価値観にとらわれることなく、これまでにない「新しい幸せの価値基準」を社会へと提示し、関わる全員が利益と成長を享受できるエコシステムを創り上げています。'
+                },
+                {
+                  num: '03',
+                  ttl: '変化を恐れず進化を続ける、真の「伴走型パートナー」へ',
+                  text: '現状維持に満足することなく、常に描くべき理想の姿を見据えて組織自らを柔軟に進化させてきました。失敗を恐れず挑戦を受け入れるカルチャーが組織全体に浸透しています。急速に変化する現代社会において、単なる受託者や開発者の立ち位置を超え、理想や幸福を実現しようとするすべての人々にとって不可欠な伴走者であり続けることを目指しています。これからも人に寄り添い、共に未来を切り拓く真のパートナーとして歩み続けます。'
+                }
+              ] %>
+
+              <% intCardItem.forEach(function(item){ %>
+                <div class="p-main__intCardItem">
+                  <p class="p-main__intCardItemNum">MAISON MARCの進化 <%= item.num %></p>
+                  <p class="p-main__intCardItemTtl"><%= item.ttl %></p>
+                  <p class="p-main__intCardItemTxt"><%= item.text %></p>
+                </div>
+              <% }) %>
+            </div>
+
+            <% let interviewSecond = [
+              {ques:'MMで考える幸せへの思いは？',
+               answer:'｢プロダクトありきではない、関わるすべてに寄り添う経済圏の創出。｣',
+               text:'単に特定のプロダクトやサービスを売るだけではなく、関わる人々や企業が持続的に価値を享受できる独自の「経済圏」を生み出すことを目指しています。プロダクトは手段に過ぎず、真の目的はその先にある人々の豊かさです。利便性だけでなく、関わる全員の幸福度が向上するようなエコシステムを創り上げることこそが、私たちの考える「幸せへのアプローチ」です。',
+               img:'img-story-05.jpg',
+               alt:'interview5',
+              },
+              {ques:'進歩する世界で、MMが目指す未来とは？',
+               answer:'｢幸せを実現したいすべてに対してパートナーでありたい。｣',
+               text:'テクノロジーや社会構造がどれほど激しく進歩・変化しようとも、人間が根本で求める「幸せになりたい」という思いは変わりません。私たちは単なるシステム開発者や事業パートナーにとどまらず、描く理想や幸せを実現しようとするすべての人々にとって、伴走者であり続ける未来を目指しています。変革期だからこそ、人に寄り添う存在であり続けます。',
+               img:'img-story-01.jpg',
+               alt:'interview6',
+              },
+            ] %>
+
+            <% interviewSecond.forEach(function(item, index){ %>
+              <div class="p-main__interviewItem hideTarget <%= index % 2 === 1 ? 'revers' : '' %>">
+                <div class="p-main__interviewItemTxt">
+                  <div class="p-main__interviewItemTxtQ">
+                    <div class="p-main__interviewItemTxtQLine"></div>
+                    <p class="p-main__interviewItemTxtQItem"><%- item.ques %></p>
+                  </div>
+                  <p class="p-main__interviewItemTxtA"><%- item.answer %></p>
+                  <p class="p-main__interviewItemTxtADet">葉倉CEO：<br><%- item.text %></p>
+                </div>
+                <img class="p-main__interviewItemImg js-animate js-fadeRight" src="images/<%= item.img %>" alt="<%= item.alt %>">
+              </div>
+            <% }) %>
+          </div>
+        </div>
+      </section>
+      <!--.p-main__hide-->
+      <section>
+        <div class="p-main__hideBtn">
+          <span class="p-main__hideBtnTxt">もっと見る</span>
+          <button class="p-main__hideBtnArrow"></button>
+        </div>
+      </section>
+    </div>
+    <%- include('common/_footer') %>

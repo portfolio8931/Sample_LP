@@ -1,0 +1,91 @@
+$base_color: #000000;
+$base_colorLight: #171717;
+$text_color: #ffffff;
+$fontSise_base: 15px;
+$letterSp_base: -0.05em;
+$letterSp_wide: 0.3em;
+$letterSp_footer: -0.1em;
+$lineHeight_base: 2;
+$sp_padding: 0 15px;
+$transition_base: 1.5s ease;
+
+@font-face {
+  font-family: 'Noway';
+  src: url('../fonts/Noway-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noway';
+  src: url('../fonts/Noway-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noway';
+  src: url('../fonts/Noway-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@mixin sp {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin contentPrem{
+  width: 100%;
+  height: auto;
+  padding: 120px;
+  background-color: $base_color;
+  color: $text_color;
+  text-align: center;
+
+  @include sp{
+    padding: 60px;
+  }
+}
+
+@mixin contentPremTtl{
+  display: inline-block;
+  position: relative;
+  font-size: 30px;
+  font-family: 'Noway';
+  letter-spacing: 0.2em;
+
+  @include sp{
+    font-size: 20px;
+    letter-spacing: 0.1em;
+  }
+}
+
+@mixin contentPremTxtBefore{
+  content: "";
+  display: block;
+  width: 0px;
+  height: 170px;
+  margin: 40px auto 20px auto;
+  border-left: 1px solid $text_color;
+  opacity: 0.6;
+  text-align: center;
+
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 1s ease-out;
+}
+
+@mixin contentPremTxt{
+  font-size: 13px;
+  line-height: 2.5;
+
+  @include sp{
+    line-height: $lineHeight_base;
+  }
+}
+
+a{
+  text-decoration: none;
+}
